@@ -2312,7 +2312,7 @@ Tabs.Info:AddParagraph({
 		Title = "Link Join Sever Discord",
 		Description = "Nosso Servidor do discord",
 		Callback = function()
-			setclipboard(tostring("https://discord.gg/pjEeHmk9P"))
+			setclipboard(tostring("https://discord.gg/XCVgHb7JN"))
 		end
 	})
 	local ReplicatedStorage = game:GetService("ReplicatedStorage")
