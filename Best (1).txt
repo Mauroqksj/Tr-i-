@@ -1,3 +1,30 @@
+-- ⚡ Super Speed Blox Fruits (By fala_estilo) ⚡
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local player = Players.LocalPlayer
+
+local speed = 4 -- quanto maior, mais rápido (recomendo entre 3 e 7)
+local active = true -- deixar true pra ficar sempre ativo
+
+-- Espera o personagem
+repeat task.wait() until player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+local root = player.Character:WaitForChild("HumanoidRootPart")
+local humanoid = player.Character:WaitForChild("Humanoid")
+
+-- Mantém a velocidade
+RunService.Heartbeat:Connect(function()
+	if active and humanoid.MoveDirection.Magnitude > 0 then
+		root.CFrame = root.CFrame + humanoid.MoveDirection * speed
+	end
+end)
+
+-- Caso morra, reaplica
+player.CharacterAdded:Connect(function(char)
+	task.wait(1)
+	root = char:WaitForChild("HumanoidRootPart")
+	humanoid = char:WaitForChild("Humanoid")
+end)
+
 --// This file was created by XHider https://discord.gg/infinityscript
 
 	do
