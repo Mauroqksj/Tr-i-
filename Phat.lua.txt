@@ -13,12 +13,12 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 local Window =
     Fluent:CreateWindow(
     {
-        Title = "PhatCrystal Hub[Free]",
-        SubTitle = "Make by @phat_crystal",
+        Title = "Night Wish7",
+        SubTitle = "By Karma | Blox Fruits",
         TabWidth = 160,
-        Size = UDim2.fromOffset(530, 350),
+        Size = UDim2.fromOffset(400, 350),
         Acrylic = false,
-        Theme = "Dark",
+        Theme = "Darker",
         MinimizeKey = Enum.KeyCode.End
     }
 )
@@ -102,7 +102,7 @@ do
     game:GetService("StarterGui"):SetCore(
         "SendNotification",
         {
-            Title = "Phat Crystal Hub",
+            Title = "Night Wish7",
             Text = "Loaded Success",
             Duration = 10
         }
@@ -4283,9 +4283,9 @@ do
     Tabs.Sever:AddButton(
         {
             Title = "Sever Discord PhatCrystal",
-            Description = "Click to copy the Discord link",
+            Description = "Link manhwa Plaything",
             Callback = function()
-                setclipboard("https://discord.gg/hyGgHBudcs")
+                setclipboard("https://mangalivre.blog/manga/plaything/")
                 print("Discord link copied!")
             end
         }
