@@ -1,58 +1,58 @@
 local v14 = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))();
 local v15 = v14:CreateWindow({
-    Title = "GenGar [ Premium ]",
-    SubTitle = "By Obii",
+    Title = "GhostWare Hub",
+    SubTitle = "| Blox Fruits",
     TabWidth = 160,
-    Theme = "Dark",
+    Theme = "Darker",
     Acrylic = false,
     Size = UDim2.fromOffset(500, 320),
     MinimizeKey = Enum.KeyCode.End
 });
 local v16 = {
     Home = v15:AddTab({
-        Title = "Tab Information"
+        Title = "Information"
     }),
     Main = v15:AddTab({
-        Title = "Tab Farming"
+        Title = "Farming"
     }),
     Sea = v15:AddTab({
-        Title = "Tab Volcano And Sea Event"
+        Title = "Volcano And Sea Event"
     }),
     ITM = v15:AddTab({
-        Title = "Tab Farming Other"
+        Title = "Farming Other"
     }),
     Setting = v15:AddTab({
-        Title = "Setting Farm"
+        Title = "Setting"
     }),
     Status = v15:AddTab({
-        Title = "Tab Status And Server"
+        Title = "Status And Server"
     }),
     Stats = v15:AddTab({
-        Title = "Tab Stats"
+        Title = "Stats"
     }),
     Player = v15:AddTab({
-        Title = "Tab Local Player"
+        Title = "Local Player"
     }),
     Teleport = v15:AddTab({
-        Title = "Tab Teleport"
+        Title = "Teleport"
     }),
     Visual = v15:AddTab({
-        Title = "Tab Visual"
+        Title = "Visual"
     }),
     Fruit = v15:AddTab({
-        Title = "Tab Esp And Fruit"
+        Title = "Esp And Fruit"
     }),
     Raid = v15:AddTab({
-        Title = "Tab Raid"
+        Title = "Raid"
     }),
     Race = v15:AddTab({
-        Title = "Tab Upgrade Race"
+        Title = "Upgrade Race"
     }),
     Shop = v15:AddTab({
-        Title = "Tab Shop"
+        Title = "Shop"
     }),
     Misc = v15:AddTab({
-        Title = "Tab Misc"
+        Title = "Misc"
     })
 };
 local v17 = v14.Options;
@@ -9026,4 +9026,5 @@ spawn(function()
         end
     end
 end);
+
 
