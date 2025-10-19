@@ -3,9 +3,9 @@ local v15 = v14:CreateWindow({
     Title = "GhostWare Hub",
     SubTitle = "| Blox Fruits",
     TabWidth = 160,
-    Theme = "Darker",
+    Theme = "Dark",
     Acrylic = false,
-    Size = UDim2.fromOffset(500, 320),
+    Size = UDim2.fromOffset(450, 450),
     MinimizeKey = Enum.KeyCode.End
 });
 local v16 = {
@@ -13,13 +13,13 @@ local v16 = {
         Title = "Information"
     }),
     Main = v15:AddTab({
-        Title = "Farming"
+        Title = "Farm"
     }),
     Sea = v15:AddTab({
         Title = "Volcano And Sea Event"
     }),
     ITM = v15:AddTab({
-        Title = "Farming Other"
+        Title = "Farm Other"
     }),
     Setting = v15:AddTab({
         Title = "Setting"
@@ -34,7 +34,7 @@ local v16 = {
         Title = "Local Player"
     }),
     Teleport = v15:AddTab({
-        Title = "Teleport"
+        Title = "Travel"
     }),
     Visual = v15:AddTab({
         Title = "Visual"
@@ -46,7 +46,7 @@ local v16 = {
         Title = "Raid"
     }),
     Race = v15:AddTab({
-        Title = "Upgrade Race"
+        Title = "v4 Race"
     }),
     Shop = v15:AddTab({
         Title = "Shop"
@@ -9026,5 +9026,6 @@ spawn(function()
         end
     end
 end);
+
 
 
