@@ -1994,13 +1994,13 @@
 		}
 	end
 
-	local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/discoart/FluentPlus/refs/heads/main/Beta.lua"))()
+	local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 	local Window = Fluent:CreateWindow({
-		Title = "Night Mystic | Beta",
+		Title = "GhostWare Hub",
 		SubTitle = "by Araújo7xp & Mauro | Blox Fruits",
 		TabWidth = 160,
-		Theme = "Arctic",
-		Acrylic = false,
+		Theme = "Dark",
+		Acrylic = true,
 		Size = UDim2.fromOffset(450, 350),
 		MinimizeKey = Enum.KeyCode.End
 	})
