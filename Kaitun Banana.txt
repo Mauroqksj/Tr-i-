@@ -2001,7 +2001,7 @@
 		TabWidth = 160,
 		Theme = "Darker",
 		Acrylic = true,
-		Size = UDim2.fromOffset(425, 370),
+		Size = UDim2.fromOffset(400, 400),
 		MinimizeKey = Enum.KeyCode.End
 	})
 
@@ -2076,10 +2076,6 @@ end)
 		Icon = "info"
 	}),
 
-	Discord = Window:AddTab({
-		Title = "Discord",
-		Icon = "message-circle"
-	}),
 	Server = Window:AddTab({
 		Title = "Server",
 		Icon = "server"
@@ -2096,14 +2092,12 @@ end)
 		Title = "Fighting Style V2",
 		Icon = "swords"
 	}),
-	
 	Fruit = Window:AddTab({
 		Title = "Fruit",
 		Icon = "apple"
 	}),
-	
 	Quests = Window:AddTab({
-		Title = "Quests - Items",
+		Title = "Quests",
 		Icon = "scroll"
 	}),
 	SeaEvent = Window:AddTab({
@@ -2127,8 +2121,8 @@ end)
 		Icon = "axe"
 	}),
 	Combat = Window:AddTab({
-		Title = "Pvp",
-		Icon = "crosshair"
+		Title = "Visual",
+		Icon = "eye"
 	}),
 	Travel = Window:AddTab({
 		Title = "Travel",
