@@ -2001,7 +2001,7 @@
 		TabWidth = 160,
 		Theme = "Darker",
 		Acrylic = true,
-		Size = UDim2.fromOffset(450, 400),
+		Size = UDim2.fromOffset(425, 370),
 		MinimizeKey = Enum.KeyCode.End
 	})
 
@@ -2093,7 +2093,7 @@ end)
 		Icon = "settings"
 	}),
 	Melee = Window:AddTab({
-		Title = "Auto Get Fighting Style V2",
+		Title Fighting Styles v2",
 		Icon = "swords"
 	}),
 	
@@ -2127,8 +2127,8 @@ end)
 		Icon = "axe"
 	}),
 	Combat = Window:AddTab({
-		Title = "Pvp",
-		Icon = "crosshair"
+		Title = "Visual",
+		Icon = "eye"
 	}),
 	Travel = Window:AddTab({
 		Title = "Travel",
