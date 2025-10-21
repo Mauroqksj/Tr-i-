@@ -1,4 +1,4 @@
---// This file was created by XHider https://discord.gg/infinityscript
+
 
 	do
 		ply = game.Players
@@ -1999,9 +1999,9 @@
 		Title = "GhostWare Hub",
 		SubTitle = "by Araújo7xp & Mauro | Blox Fruits",
 		TabWidth = 160,
-		Theme = "Dark",
+		Theme = "Darker",
 		Acrylic = true,
-		Size = UDim2.fromOffset(450, 350),
+		Size = UDim2.fromOffset(450, 430),
 		MinimizeKey = Enum.KeyCode.End
 	})
 
@@ -2013,7 +2013,7 @@ screenGui.Parent = game.CoreGui
 local toggleButton = Instance.new("ImageButton")
 toggleButton.Size = UDim2.new(0, 50, 0, 50)
 toggleButton.Position = UDim2.new(0.15, 0, 0.15, 0)
-toggleButton.Image = "rbxassetid://76595458631173" -- sua imagem
+toggleButton.Image = "rbxassetid://11770452703" -- sua imagem
 toggleButton.ScaleType = Enum.ScaleType.Fit
 toggleButton.BackgroundColor3 = Color3.fromRGB(0, 102, 255) -- cor de fundo (caso a imagem tenha transparência)
 toggleButton.Parent = screenGui
