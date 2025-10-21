@@ -1997,11 +1997,11 @@
 	local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 	local Window = Fluent:CreateWindow({
 		Title = "GhostWare Hub",
-		SubTitle = "by Araújo7xp & Mauro | Blox Fruits",
+		SubTitle = "https://discord.gg/nightshadow",
 		TabWidth = 160,
-		Theme = "Darker",
+		Theme = "Dark",
 		Acrylic = true,
-		Size = UDim2.fromOffset(450, 430),
+		Size = UDim2.fromOffset(430, 370),
 		MinimizeKey = Enum.KeyCode.End
 	})
 
@@ -2073,74 +2073,74 @@ end)
 	local Tabs = {
 	Info = Window:AddTab({
 		Title = "Information",
-		Icon = "info"
+		Icon = ""
 	}),
 
 	Discord = Window:AddTab({
 		Title = "Discord",
-		Icon = "message-circle"
+		Icon = ""
 	}),
 	Server = Window:AddTab({
 		Title = "Server",
-		Icon = "server"
+		Icon = ""
 	}),
 	Main = Window:AddTab({
 		Title = "Farming",
-		Icon = "sword"
+		Icon = ""
 	}),
 	Settings = Window:AddTab({
 		Title = "Settings",
-		Icon = "settings"
+		Icon = ""
 	}),
 	Melee = Window:AddTab({
 		Title = "Auto Get Fighting Style V2",
-		Icon = "swords"
+		Icon = ""
 	}),
 	
 	Fruit = Window:AddTab({
 		Title = "Fruit",
-		Icon = "apple"
+		Icon = ""
 	}),
 	
 	Quests = Window:AddTab({
-		Title = "Quests - Items",
-		Icon = "scroll"
+		Title = "Quests",
+		Icon = ""
 	}),
 	SeaEvent = Window:AddTab({
 		Title = "Sea Events",
-		Icon = "waves"
+		Icon = ""
 	}),
 	Mirage = Window:AddTab({
 		Title = "Race V4",
-		Icon = "moon"
+		Icon = ""
 	}),
 	Drago = Window:AddTab({
 		Title = "Dragon Dojo",
-		Icon = "flame"
+		Icon = ""
 	}),
 	Prehistoric = Window:AddTab({
 		Title = "Prehistoric",
-		Icon = "skull"
+		Icon = ""
 	}),
 	Raids = Window:AddTab({
 		Title = "Raids",
-		Icon = "axe"
+		Icon = ""
 	}),
 	Combat = Window:AddTab({
-		Title = "Pvp",
-		Icon = "crosshair"
+		Title = "Visual",
+		Icon = ""
 	}),
 	Travel = Window:AddTab({
 		Title = "Travel",
-		Icon = "map-pin"
+		Icon = ""
 	}),
 	Shop = Window:AddTab({
 		Title = "Shop",
-		Icon = "shopping-bag"
+		Icon = ""
 	}),
 	Misc = Window:AddTab({
 		Title = "Others",
-		Icon = "package"
+		Icon = ""
 	})
 }
 
@@ -2303,9 +2303,9 @@ Tabs.Info:AddParagraph({
 
 	Tabs.Discord:AddButton({
 		Title = "Link Join Sever Discord",
-		Description = "Nosso Servidor do discord",
+		Description = "Link YouTube",
 		Callback = function()
-			setclipboard(tostring("https://discord.gg/pjEeHmk9P"))
+			setclipboard(tostring("https://youtube.com/@nightshadowzz?si=8OTqCKtBICYTbCJ3"))
 		end
 	})
 	local ReplicatedStorage = game:GetService("ReplicatedStorage")
