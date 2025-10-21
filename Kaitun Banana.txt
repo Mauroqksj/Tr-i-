@@ -1996,12 +1996,12 @@
 
 	local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 	local Window = Fluent:CreateWindow({
-		Title = "GhostWare Hub",
+		Title = "Night Mystic",
 		SubTitle = "https://discord.gg/nightshadow",
 		TabWidth = 160,
-		Theme = "Dark",
+		Theme = "Darker",
 		Acrylic = true,
-		Size = UDim2.fromOffset(430, 370),
+		Size = UDim2.fromOffset(440, 390),
 		MinimizeKey = Enum.KeyCode.End
 	})
 
@@ -2013,7 +2013,7 @@ screenGui.Parent = game.CoreGui
 local toggleButton = Instance.new("ImageButton")
 toggleButton.Size = UDim2.new(0, 50, 0, 50)
 toggleButton.Position = UDim2.new(0.15, 0, 0.15, 0)
-toggleButton.Image = "rbxassetid://11770452703" -- sua imagem
+toggleButton.Image = "rbxassetid://4911164158" -- sua imagem
 toggleButton.ScaleType = Enum.ScaleType.Fit
 toggleButton.BackgroundColor3 = Color3.fromRGB(0, 102, 255) -- cor de fundo (caso a imagem tenha transparência)
 toggleButton.Parent = screenGui
@@ -2077,7 +2077,7 @@ end)
 	}),
 
 	Discord = Window:AddTab({
-		Title = "Discord",
+		Title = "YouTube",
 		Icon = ""
 	}),
 	Server = Window:AddTab({
@@ -2093,7 +2093,7 @@ end)
 		Icon = ""
 	}),
 	Melee = Window:AddTab({
-		Title = "Auto Get Fighting Style V2",
+		Title = "Fighting Styles",
 		Icon = ""
 	}),
 	
@@ -2302,7 +2302,7 @@ Tabs.Info:AddParagraph({
 })
 
 	Tabs.Discord:AddButton({
-		Title = "Link Join Sever Discord",
+		Title = "Link YouTube NigthtShadow",
 		Description = "Link YouTube",
 		Callback = function()
 			setclipboard(tostring("https://youtube.com/@nightshadowzz?si=8OTqCKtBICYTbCJ3"))
