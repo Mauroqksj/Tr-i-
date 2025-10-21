@@ -1999,7 +1999,7 @@
 		Title = "Night Mystic",
 		SubTitle = "by Araújo7xp & Mauro | Blox Fruits",
 		TabWidth = 160,
-		Theme = "Dark",
+		Theme = "Darker",
 		Acrylic = true,
 		Size = UDim2.fromOffset(485, 390),
 		MinimizeKey = Enum.KeyCode.End
@@ -2085,8 +2085,8 @@ end)
 		Icon = "server"
 	}),
 	Main = Window:AddTab({
-		Title = "Farming",
-		Icon = "sword"
+		Title = "Main",
+		Icon = "home"
 	}),
 	Settings = Window:AddTab({
 		Title = "Settings",
@@ -2094,7 +2094,7 @@ end)
 	}),
 	Melee = Window:AddTab({
 		Title = "Fighting Style V2",
-		Icon = "swords"
+		Icon = "sword"
 	}),
 	
 	Fruit = Window:AddTab({
@@ -2120,7 +2120,7 @@ end)
 	}),
 	Prehistoric = Window:AddTab({
 		Title = "Prehistoric",
-		Icon = "skull"
+		Icon = "mountain"
 	}),
 	Raids = Window:AddTab({
 		Title = "Raids",
@@ -2136,7 +2136,7 @@ end)
 	}),
 	Shop = Window:AddTab({
 		Title = "Shop",
-		Icon = "shopping-bag"
+		Icon = "shopping-cart"
 	}),
 	Misc = Window:AddTab({
 		Title = "Others",
