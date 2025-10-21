@@ -1999,7 +1999,7 @@
 		Title = "Night Mystic",
 		SubTitle = "by Araújo7xp & Mauro | Blox Fruits",
 		TabWidth = 160,
-		Theme = "Arctic",
+		Theme = "Dark",
 		Acrylic = true,
 		Size = UDim2.fromOffset(485, 390),
 		MinimizeKey = Enum.KeyCode.End
