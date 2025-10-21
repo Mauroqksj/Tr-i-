@@ -2093,7 +2093,7 @@ end)
 		Icon = "settings"
 	}),
 	Melee = Window:AddTab({
-		Title Fighting Styles v2",
+		Title "Fighting Styles v2",
 		Icon = "swords"
 	}),
 	
