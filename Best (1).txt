@@ -549,7 +549,7 @@
 		t.WaterWaveSpeed = 0
 		t.WaterReflectance = 0
 		t.WaterTransparency = 0
-		l.GlobalShadows = true
+		l.GlobalShadows = false
 		l.FogEnd = 9e9
 		l.Brightness = 0
 		settings().Rendering.QualityLevel = "Level01"
@@ -918,7 +918,14 @@
 						Noclip.Velocity = Vector3.new(0, 0, 0)
 					end
 					if not plr.Character:FindFirstChild('highlight') then
-						
+						local Test = Instance.new('Highlight')
+						Test.Name = "highlight"
+						Test.Enabled = true
+						Test.FillColor = Color3.fromRGB(0, 191, 255) -- xanh nước biển
+						Test.OutlineColor = Color3.fromRGB(255, 255, 255)
+						Test.FillTransparency = 0.5
+						Test.OutlineTransparency = 0.2
+						Test.Parent = plr.Character
 					end
 					for _, no in pairs(plr.Character:GetDescendants()) do
 						if no:IsA("BasePart") then
@@ -1996,11 +2003,11 @@
 
 	local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/discoart/FluentPlus/refs/heads/main/Beta.lua"))()
 	local Window = Fluent:CreateWindow({
-		Title = "Night Mystic",
+		Title = "Night Mystic | Beta",
 		SubTitle = "by Araújo7xp & Mauro | Blox Fruits",
 		TabWidth = 160,
-		Theme = "Darker",
-		Acrylic = true,
+		Theme = "Arctic",
+		Acrylic = false,
 		Size = UDim2.fromOffset(450, 350),
 		MinimizeKey = Enum.KeyCode.End
 	})
@@ -2013,7 +2020,7 @@ screenGui.Parent = game.CoreGui
 local toggleButton = Instance.new("ImageButton")
 toggleButton.Size = UDim2.new(0, 50, 0, 50)
 toggleButton.Position = UDim2.new(0.15, 0, 0.15, 0)
-toggleButton.Image = "rbxassetid://4911164158" -- sua imagem
+toggleButton.Image = "rbxassetid://76595458631173" -- sua imagem
 toggleButton.ScaleType = Enum.ScaleType.Fit
 toggleButton.BackgroundColor3 = Color3.fromRGB(0, 102, 255) -- cor de fundo (caso a imagem tenha transparência)
 toggleButton.Parent = screenGui
@@ -2072,7 +2079,7 @@ end)
 	end)
 	local Tabs = {
 	Info = Window:AddTab({
-		Title = "Update Log",
+		Title = "Information",
 		Icon = "info"
 	}),
 
@@ -2085,16 +2092,16 @@ end)
 		Icon = "server"
 	}),
 	Main = Window:AddTab({
-		Title = "Main",
-		Icon = "home"
+		Title = "Farming",
+		Icon = "sword"
 	}),
 	Settings = Window:AddTab({
 		Title = "Settings",
 		Icon = "settings"
 	}),
 	Melee = Window:AddTab({
-		Title = "Fighting Style V2",
-		Icon = "sword"
+		Title = "Auto Get Fighting Style V2",
+		Icon = "swords"
 	}),
 	
 	Fruit = Window:AddTab({
@@ -2103,7 +2110,7 @@ end)
 	}),
 	
 	Quests = Window:AddTab({
-		Title = "Quests",
+		Title = "Quests - Items",
 		Icon = "scroll"
 	}),
 	SeaEvent = Window:AddTab({
@@ -2120,15 +2127,15 @@ end)
 	}),
 	Prehistoric = Window:AddTab({
 		Title = "Prehistoric",
-		Icon = "mountain"
+		Icon = "skull"
 	}),
 	Raids = Window:AddTab({
 		Title = "Raids",
 		Icon = "axe"
 	}),
 	Combat = Window:AddTab({
-		Title = "Visual",
-		Icon = "eye"
+		Title = "Pvp",
+		Icon = "crosshair"
 	}),
 	Travel = Window:AddTab({
 		Title = "Travel",
@@ -2136,7 +2143,7 @@ end)
 	}),
 	Shop = Window:AddTab({
 		Title = "Shop",
-		Icon = "shopping-cart"
+		Icon = "shopping-bag"
 	}),
 	Misc = Window:AddTab({
 		Title = "Others",
@@ -2298,7 +2305,7 @@ end)
 -- 💬 Parágrafo único na aba Information
 Tabs.Info:AddParagraph({
 	Title = "Leia Por Favor",
-	Content = "Em Breve Vamos Colocar As Atualizações Do Script Aqui"
+	Content = "Esse Script Contém Alguns Bugs, Em Breve Vamos Tentar Arrumar"
 })
 
 	Tabs.Discord:AddButton({
@@ -10902,7 +10909,229 @@ end)
 			replicated.Remotes.CommF_:InvokeServer("CyborgTrainer", " Buy")
 		end
 	})
-	
+	Tabs.Server:AddButton({
+		Title = "Criar Servidor Privado",
+		Description = "Cria Um Servidor Privado e Entra nele Automaticamente",
+		Callback = function()
+			task.spawn(function()
+				-- MD5 và các hàm hỗ trợ
+				local md5 = {}
+				local hmac = {}
+				local base64 = {}
+
+				do
+					do
+						local T = {
+							0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee,
+							0xf57c0faf, 0x4787c62a, 0xa8304613, 0xfd469501,
+							0x698098d8, 0x8b44f7af, 0xffff5bb1, 0x895cd7be,
+							0x6b901122, 0xfd987193, 0xa679438e, 0x49b40821,
+							0xf61e2562, 0xc040b340, 0x265e5a51, 0xe9b6c7aa,
+							0xd62f105d, 0x02441453, 0xd8a1e681, 0xe7d3fbc8,
+							0x21e1cde6, 0xc33707d6, 0xf4d50d87, 0x455a14ed,
+							0xa9e3e905, 0xfcefa3f8, 0x676f02d9, 0x8d2a4c8a,
+							0xfffa3942, 0x8771f681, 0x6d9d6122, 0xfde5380c,
+							0xa4beea44, 0x4bdecfa9, 0xf6bb4b60, 0xbebfbc70,
+							0x289b7ec6, 0xeaa127fa, 0xd4ef3085, 0x04881d05,
+							0xd9d4d039, 0xe6db99e5, 0x1fa27cf8, 0xc4ac5665,
+							0xf4292244, 0x432aff97, 0xab9423a7, 0xfc93a039,
+							0x655b59c3, 0x8f0ccc92, 0xffeff47d, 0x85845dd1,
+							0x6fa87e4f, 0xfe2ce6e0, 0xa3014314, 0x4e0811a1,
+							0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391,
+						}
+
+						local function add(a, b)
+							local lsw = bit32.band(a, 0xFFFF) + bit32.band(b, 0xFFFF)
+							local msw = bit32.rshift(a, 16) + bit32.rshift(b, 16) + bit32.rshift(lsw, 16)
+							return bit32.bor(bit32.lshift(msw, 16), bit32.band(lsw, 0xFFFF))
+						end
+
+						local function rol(x, n)
+							return bit32.bor(bit32.lshift(x, n), bit32.rshift(x, 32 - n))
+						end
+
+						local function F(x, y, z)
+							return bit32.bor(bit32.band(x, y), bit32.band(bit32.bnot(x), z))
+						end
+						local function G(x, y, z)
+							return bit32.bor(bit32.band(x, z), bit32.band(y, bit32.bnot(z)))
+						end
+						local function H(x, y, z)
+							return bit32.bxor(x, bit32.bxor(y, z))
+						end
+						local function I(x, y, z)
+							return bit32.bxor(y, bit32.bor(x, bit32.bnot(z)))
+						end
+
+						function md5.sum(message)
+							local a, b, c, d = 0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476
+							local message_len = #message
+							local padded_message = message .. "\128"
+							while #padded_message % 64 ~= 56 do
+								padded_message = padded_message .. "\0"
+							end
+
+							local len_bytes = ""
+							local len_bits = message_len * 8
+							for i = 0, 7 do
+								len_bytes = len_bytes .. string.char(bit32.band(bit32.rshift(len_bits, i * 8), 0xFF))
+							end
+							padded_message = padded_message .. len_bytes
+
+							for i = 1, #padded_message, 64 do
+								local chunk = padded_message:sub(i, i + 63)
+								local X = {}
+								for j = 0, 15 do
+									local b1, b2, b3, b4 = chunk:byte(j * 4 + 1, j * 4 + 4)
+									X[j] = bit32.bor(b1, bit32.lshift(b2, 8), bit32.lshift(b3, 16), bit32.lshift(b4, 24))
+								end
+
+								local aa, bb, cc, dd = a, b, c, d
+								local s = { 7, 12, 17, 22, 5, 9, 14, 20, 4, 11, 16, 23, 6, 10, 15, 21 }
+
+								for j = 0, 63 do
+									local f, k, shift_index
+									if j < 16 then
+										f = F(b, c, d)
+										k = j
+										shift_index = j % 4
+									elseif j < 32 then
+										f = G(b, c, d)
+										k = (1 + 5 * j) % 16
+										shift_index = 4 + (j % 4)
+									elseif j < 48 then
+										f = H(b, c, d)
+										k = (5 + 3 * j) % 16
+										shift_index = 8 + (j % 4)
+									else
+										f = I(b, c, d)
+										k = (7 * j) % 16
+										shift_index = 12 + (j % 4)
+									end
+
+									local temp = add(a, f)
+									temp = add(temp, X[k])
+									temp = add(temp, T[j + 1])
+									temp = rol(temp, s[shift_index + 1])
+
+									local new_b = add(b, temp)
+									a, b, c, d = d, new_b, b, c
+								end
+
+								a = add(a, aa)
+								b = add(b, bb)
+								c = add(c, cc)
+								d = add(d, dd)
+							end
+
+							local function to_le_hex(n)
+								local s = ""
+								for i = 0, 3 do
+									s = s .. string.char(bit32.band(bit32.rshift(n, i * 8), 0xFF))
+								end
+								return s
+							end
+
+							return to_le_hex(a) .. to_le_hex(b) .. to_le_hex(c) .. to_le_hex(d)
+						end
+					end
+
+					do
+						function hmac.new(key, msg, hash_func)
+							if #key > 64 then
+								key = hash_func(key)
+							end
+
+							local o_key_pad = ""
+							local i_key_pad = ""
+							for i = 1, 64 do
+								local byte = (i <= #key and string.byte(key, i)) or 0
+								o_key_pad = o_key_pad .. string.char(bit32.bxor(byte, 0x5C))
+								i_key_pad = i_key_pad .. string.char(bit32.bxor(byte, 0x36))
+							end
+
+							return hash_func(o_key_pad .. hash_func(i_key_pad .. msg))
+						end
+					end
+
+					do
+						local b = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+
+						function base64.encode(data)
+							return (
+								(data:gsub(".", function(x)
+									local r, b_val = "", x:byte()
+									for i = 8, 1, -1 do
+										r = r .. (b_val % 2 ^ i - b_val % 2 ^ (i - 1) > 0 and "1" or "0")
+									end
+									return r
+								end) .. "0000"):gsub("%d%d%d?%d?%d?%d?", function(x)
+									if #x < 6 then
+										return ""
+									end
+									local c = 0
+									for i = 1, 6 do
+										c = c + (x:sub(i, i) == "1" and 2 ^ (6 - i) or 0)
+									end
+									return b:sub(c + 1, c + 1)
+								end) .. ({ "", "==", "=" })[#data % 3 + 1]
+							)
+						end
+					end
+				end
+
+				local function GenerateReservedServerCode(placeId)
+					local uuid = {}
+					for i = 1, 16 do
+						uuid[i] = math.random(0, 255)
+					end
+
+					uuid[7] = bit32.bor(bit32.band(uuid[7], 0x0F), 0x40)
+					uuid[9] = bit32.bor(bit32.band(uuid[9], 0x3F), 0x80)
+
+					local firstBytes = ""
+					for i = 1, 16 do
+						firstBytes = firstBytes .. string.char(uuid[i])
+					end
+
+					local gameCode = string.format("%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x", table.unpack(uuid))
+
+					local placeIdBytes = ""
+					local pIdRec = placeId
+					for _ = 1, 8 do
+						placeIdBytes = placeIdBytes .. string.char(pIdRec % 256)
+						pIdRec = math.floor(pIdRec / 256)
+					end
+
+					local content = firstBytes .. placeIdBytes
+					local SUPERDUPERSECRETROBLOXKEYTHATTHEYDIDNTCHANGEEVERSINCEFOREVER = "e4Yn8ckbCJtw2sv7qmbg"
+					local signature = hmac.new(SUPERDUPERSECRETROBLOXKEYTHATTHEYDIDNTCHANGEEVERSINCEFOREVER, content, md5.sum)
+
+					local accessCodeBytes = signature .. content
+					local accessCode = base64.encode(accessCodeBytes)
+					accessCode = accessCode:gsub("+", "-"):gsub("/", "_")
+
+					local pdding = 0
+					accessCode, _ = accessCode:gsub("=", function()
+						pdding = pdding + 1
+						return ""
+					end)
+
+					accessCode = accessCode .. tostring(pdding)
+					return accessCode, gameCode
+				end
+
+				-- Chạy script
+				task.wait(1)
+				if #game.Players:GetPlayers() > 1 then
+					local accessCode, _ = GenerateReservedServerCode(game.PlaceId)
+					game.RobloxReplicatedStorage.ContactListIrisInviteTeleport:FireServer(game.PlaceId, "", accessCode)
+				else
+					warn("⚠️ Không chạy vì server chỉ có 1 người")
+				end
+			end)
+		end
+	})
 	Tabs.Server:AddButton({
 		Title = "Rejoin Server",
 		Description = "",
@@ -11521,236 +11750,6 @@ end)
 							Actived()
 							LeftClickRemote:FireServer(Vector3.new(0.01, -500, 0.01), 1, true);
 							LeftClickRemote:FireServer(false)
-						end
-					end
-				end
-			end)
-		end)
-	end)
-	Window:SelectTab(1)))
-		while task.wait() do
-			if _G.daylightN then
-				if _G.SelectDN == "Day" then
-					Lighting.ClockTime = 12
-				elseif _G.SelectDN == "Night" then
-					Lighting.ClockTime = 0
-				end
-			end
-		end
-	end)
-	walkWater = Tabs.Misc:AddToggle("walkWater", {
-		Title = "Turn on Walk on Water",
-		Description = "Andar Sobre a Água",
-		Default = true
-	})
-	walkWater:OnChanged(function(Value)
-		_G.WalkWater_Part = Value
-		if _G.WalkWater_Part then
-			game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000, 112, 1000)
-		else
-			game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000, 80, 1000)
-		end
-	end)
-	iceWalk = Tabs.Misc:AddToggle("iceWalk", {
-		Title = "Turn on Ice Walk",
-		Description = "Ice walk just like walk on water but have ice effect",
-		Default = false
-	})
-	iceWalk:OnChanged(function(Value)
-		_G.WalkWater = Value
-	end)
-	spawn(function()
-		while task.wait() do
-			if _G.WalkWater then
-				pcall(function()
-					if plr.Character and plr.Character:FindFirstChild("LeftFoot") then
-						local upval0 = replicated.Assets.Models.IceSpikes4:Clone()
-						upval0.Parent = workspace
-						upval0.Size = Vector3.new(3 + math.random(10, 12), 1.7, 3 + math.random(10, 12))
-						upval0.Color = Color3.fromRGB(128, 187, 219)
-						upval0.CFrame = CFrame.new(plr.Character.Head.Position.X, -3.8, plr.Character.Head.Position.Z) * CFrame.Angles((math.random() - 0.5) * 0.06, math.random() * 7, (math.random() - 0.5) * 0.07)
-						local var85 = {};
-						var85.Size = Vector3.new(0, 0.3, 0)
-						local var3 = TW:Create(upval0, TweenInfo.new(2, Enum.EasingStyle.Quad, Enum.EasingDirection.In), var85)
-						var3.Completed:Connect(function()
-							upval0:Destroy()
-						end)
-						var3:Play()
-					end
-				end)
-			end
-		end
-	end)
-	local player = game.Players.LocalPlayer
-	local function IsEntityAlive(entity)
-		if not entity then
-			return false
-		end
-		local humanoid = entity:FindFirstChild("Humanoid")
-		return humanoid and humanoid.Health > 0
-	end
-	local function GetEnemiesInRange(character, range)
-		local enemies = game:GetService("Workspace").Enemies:GetChildren()
-		local players = game:GetService("Players"):GetPlayers()
-		local targets = {}
-		local playerPos = character:GetPivot().Position
-		for _, enemy in ipairs(enemies) do
-			local rootPart = enemy:FindFirstChild("HumanoidRootPart")
-			if rootPart and IsEntityAlive(enemy) then
-				local distance = (rootPart.Position - playerPos).Magnitude
-				if distance <= range then
-					table.insert(targets, enemy)
-				end
-			end
-		end
-		for _, otherPlayer in ipairs(players) do
-			if otherPlayer ~= player and otherPlayer.Character then
-				local rootPart = otherPlayer.Character:FindFirstChild("HumanoidRootPart")
-				if rootPart and IsEntityAlive(otherPlayer.Character) then
-					local distance = (rootPart.Position - playerPos).Magnitude
-					if distance <= range then
-						table.insert(targets, otherPlayer.Character)
-					end
-				end
-			end
-		end
-		return targets
-	end
-	function AttackNoCoolDown()
-		local player = game:GetService("Players").LocalPlayer
-		local character = player.Character
-		if not character then
-			return
-		end
-		local equippedWeapon = nil
-		for _, item in ipairs(character:GetChildren()) do
-			if item:IsA("Tool") then
-				equippedWeapon = item
-				break
-			end
-		end
-		if not equippedWeapon then
-			return
-		end
-		local enemiesInRange = GetEnemiesInRange(character, 60)
-		if #enemiesInRange == 0 then
-			return
-		end
-		local storage = game:GetService("ReplicatedStorage")
-		local modules = storage:FindFirstChild("Modules")
-		if not modules then
-			return
-		end
-		local attackEvent = storage:WaitForChild("Modules"):WaitForChild("Net"):WaitForChild("RE/RegisterAttack")
-		local hitEvent = storage:WaitForChild("Modules"):WaitForChild("Net"):WaitForChild("RE/RegisterHit")
-		if not attackEvent or not hitEvent then
-			return
-		end
-		local targets, mainTarget = {}, nil
-		for _, enemy in ipairs(enemiesInRange) do
-			if not enemy:GetAttribute("IsBoat") then
-				local HitboxLimbs = {
-					"RightLowerArm",
-					"RightUpperArm",
-					"LeftLowerArm",
-					"LeftUpperArm",
-					"RightHand",
-					"LeftHand"
-				}
-				local head = enemy:FindFirstChild(HitboxLimbs[math.random(#HitboxLimbs)]) or enemy.PrimaryPart
-				if head then
-					table.insert(targets, {
-						enemy,
-						head
-					})
-					mainTarget = head
-				end
-			end
-		end
-		if not mainTarget then
-			return
-		end
-		attackEvent:FireServer(0)
-		local playerScripts = player:FindFirstChild("PlayerScripts")
-		if not playerScripts then
-			return
-		end
-		local localScript = playerScripts:FindFirstChildOfClass("LocalScript")
-		while not localScript do
-			playerScripts.ChildAdded:Wait()
-			localScript = playerScripts:FindFirstChildOfClass("LocalScript")
-		end
-		local hitFunction
-		if getsenv then
-			local success, scriptEnv = pcall(getsenv, localScript)
-			if success and scriptEnv then
-				hitFunction = scriptEnv._G.SendHitsToServer
-			end
-		end
-		local successFlags, combatRemoteThread = pcall(function()
-			return require(modules.Flags).COMBAT_REMOTE_THREAD or false
-		end)
-		if successFlags and combatRemoteThread and hitFunction then
-			hitFunction(mainTarget, targets)
-		elseif successFlags and not combatRemoteThread then
-			hitEvent:FireServer(mainTarget, targets)
-		end
-	end
-	CameraShakerR = require(game.ReplicatedStorage.Util.CameraShaker)
-	CameraShakerR:Stop()
-	get_Monster = function()
-		for a, b in pairs(workspace.Enemies:GetChildren()) do
-			local c = b:FindFirstChild("UpperTorso") or b:FindFirstChild("Head")
-			if b:FindFirstChild("HumanoidRootPart", true) and c then
-				if (b.Head.Position - plr.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-					return true, c.Position
-				end
-			end
-		end;
-		for a, d in pairs(workspace.SeaBeasts:GetChildren()) do
-			if d:FindFirstChild("HumanoidRootPart") and d:FindFirstChild("Health") and d.Health.Value > 0 then
-				return true, d.HumanoidRootPart.Position
-			end
-		end;
-		for a, d in pairs(workspace.Enemies:GetChildren()) do
-			if d:FindFirstChild("Health") and d.Health.Value > 0 and d:FindFirstChild("VehicleSeat") then
-				return true, d.Engine.Position
-			end
-		end
-	end
-	Actived = function()
-		local a = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
-		for b, c in next, getconnections(a.Activated) do
-			if typeof(c.Function) == 'function' then
-				getupvalues(c.Function)
-			end
-		end
-	end
-	task.spawn(function()
-		RunSer.Heartbeat:Connect(function()
-			pcall(function()
-				if not _G.Seriality then
-					return
-				end
-				AttackNoCoolDown()
-				local Pretool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
-				local ToolTip = Pretool.ToolTip
-				local MobAura, Mon = get_Monster()
-				if ToolTip == "Blox Fruit" then
-					if MobAura then
-						local LeftClickRemote = Pretool:FindFirstChild('LeftClickRemote');
-						if LeftClickRemote then
-							Actived()
-							LeftClickRemote:FireServer(Vector3.new(0.01, -500, 0.01), 1, true);
-							LeftClickRemote:FireServer(false)
-						end
-					end
-				end
-			end)
-		end)
-	end)
-	Window:SelectTab(1)
-
 						end
 					end
 				end
