@@ -442,7 +442,7 @@
 		end
 		for _, v in pairs(workspace.Enemies:GetChildren()) do
 			if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-				if (v.PrimaryPart.Position - PosMon).Magnitude <= 250 then
+				if (v.PrimaryPart.Position - PosMon).Magnitude <= 75 then
 					v.PrimaryPart.CFrame = CFrame.new(PosMon)
 					v.PrimaryPart.CanCollide = true;
 					v:FindFirstChild("Humanoid").WalkSpeed = 0;
@@ -2006,7 +2006,7 @@
 		Title = "Night Mystic | Beta",
 		SubTitle = "by Araújo7xp & Mauro | Blox Fruits",
 		TabWidth = 160,
-		Theme = "Arctic",
+		Theme = "Darker",
 		Acrylic = false,
 		Size = UDim2.fromOffset(450, 350),
 		MinimizeKey = Enum.KeyCode.End
@@ -2079,7 +2079,7 @@ end)
 	end)
 	local Tabs = {
 	Info = Window:AddTab({
-		Title = "Information",
+		Title = "Update Log",
 		Icon = "info"
 	}),
 
@@ -2092,15 +2092,15 @@ end)
 		Icon = "server"
 	}),
 	Main = Window:AddTab({
-		Title = "Farming",
-		Icon = "sword"
+		Title = "Main",
+		Icon = "home"
 	}),
 	Settings = Window:AddTab({
 		Title = "Settings",
 		Icon = "settings"
 	}),
 	Melee = Window:AddTab({
-		Title = "Auto Get Fighting Style V2",
+		Title = "Fighting Styles V2",
 		Icon = "swords"
 	}),
 	
@@ -2143,10 +2143,10 @@ end)
 	}),
 	Shop = Window:AddTab({
 		Title = "Shop",
-		Icon = "shopping-bag"
+		Icon = "shopping-cart"
 	}),
 	Misc = Window:AddTab({
-		Title = "Others",
+		Title = "Misc",
 		Icon = "package"
 	})
 }
@@ -2179,7 +2179,7 @@ T1:OnChanged(ToggleAutoRandomFruit)
 local T2 = Tabs.Fruit:AddToggle("AutoStoreFruit", { Title = "Auto Store Fruit", Default = false })
 T2:OnChanged(ToggleAutoStoreFruit)
 
-local T3 = Tabs.Fruit:AddToggle("AutoBringFruit", { Title = "Auto Collect Fruit (Insta Teleport", Default = false })
+local T3 = Tabs.Fruit:AddToggle("AutoBringFruit", { Title = "Auto Collect Fruit (Insta Teleport (Not recommend)", Default = false })
 T3:OnChanged(ToggleAutoBringFruit)
 
 local T4 = Tabs.Fruit:AddToggle("CollectTweenFruit", { Title = "Collect Fruit (Tween)", Default = false })
@@ -2305,7 +2305,7 @@ end)
 -- 💬 Parágrafo único na aba Information
 Tabs.Info:AddParagraph({
 	Title = "Leia Por Favor",
-	Content = "Esse Script Contém Alguns Bugs, Em Breve Vamos Tentar Arrumar"
+	Content = "Em Breve Vamos Colocar As Atualizações Do Script Aqui"
 })
 
 	Tabs.Discord:AddButton({
