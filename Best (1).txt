@@ -444,7 +444,7 @@ Sea = World1 or World2 or World3 or plr:Kick("❌ Error : A[12]Blox Fruits ❌")
 		end
 		for _, v in pairs(workspace.Enemies:GetChildren()) do
 			if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-				if (v.PrimaryPart.Position - PosMon).Magnitude <= 150 then
+				if (v.PrimaryPart.Position - PosMon).Magnitude <= 170 then
 					v.PrimaryPart.CFrame = CFrame.new(PosMon)
 					v.PrimaryPart.CanCollide = true;
 					v:FindFirstChild("Humanoid").WalkSpeed = 0;
@@ -920,11 +920,7 @@ Sea = World1 or World2 or World3 or plr:Kick("❌ Error : A[12]Blox Fruits ❌")
 						Noclip.Velocity = Vector3.new(0, 0, 0)
 					end
 					if not plr.Character:FindFirstChild('highlight') then
-						local Test = Instance.new('Highlight')
-						Test.Name = "highlight"
-						Test.Enabled = true
-						Test.FillColor = Color3.fromRGB(0, 191, 255) -- xanh nước biển
-						Test.OutlineColor = Color3.fromRGB(255, 255, 255)
+						
 						Test.FillTransparency = 0.5
 						Test.OutlineTransparency = 0.2
 						Test.Parent = plr.Character
@@ -2022,7 +2018,7 @@ screenGui.Parent = game.CoreGui
 local toggleButton = Instance.new("ImageButton")
 toggleButton.Size = UDim2.new(0, 50, 0, 50)
 toggleButton.Position = UDim2.new(0.15, 0, 0.15, 0)
-toggleButton.Image = "rbxassetid://76595458631173" -- sua imagem
+toggleButton.Image = "rbxassetid://4911164158" -- sua imagem
 toggleButton.ScaleType = Enum.ScaleType.Fit
 toggleButton.BackgroundColor3 = Color3.fromRGB(0, 102, 255) -- cor de fundo (caso a imagem tenha transparência)
 toggleButton.Parent = screenGui
