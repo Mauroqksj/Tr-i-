@@ -33,16 +33,23 @@
 	end
 
 	repeat
-		local start = plr.PlayerGui:WaitForChild("Main"):WaitForChild("Loading") and game:IsLoaded()
-		wait()
-	until start
-	World1 = game.PlaceId == 2753915549
-	World2 = game.PlaceId == 79091703265657
-	World3 = game.PlaceId == 7449423635
-	Sea = World1 or World2 or World3 or plr:Kick("❌ Error : A[12]Blox Fruits ❌")
-	Marines = function()
-		replicated.Remotes.CommF_:InvokeServer("SetTeam", "Marines")
-	end
+    local start = plr.PlayerGui:WaitForChild("Main"):WaitForChild("Loading") and game:IsLoaded()
+    wait()
+until start
+
+World1 = game.PlaceId == 2753915549
+World2 = game.PlaceId == 4442272183 or game.PlaceId == 79091703265657 -- <-- aqui coloquei os dois
+World3 = game.PlaceId == 7449423635
+
+Sea = World1 or World2 or World3 or plr:Kick("❌ Error : A[12]Blox Fruits ❌")
+
+Marines = function()
+    replicated.Remotes.CommF_:InvokeServer("SetTeam", "Marines")
+end
+
+Pirates = function()
+    replicated.Remotes.CommF_:InvokeServer("SetTeam", "Pirates")
+end
 	Pirates = function()
 		replicated.Remotes.CommF_:InvokeServer("SetTeam", "Pirates")
 	end
@@ -442,7 +449,7 @@
 		end
 		for _, v in pairs(workspace.Enemies:GetChildren()) do
 			if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-				if (v.PrimaryPart.Position - PosMon).Magnitude <= 250 then
+				if (v.PrimaryPart.Position - PosMon).Magnitude <= 100 then
 					v.PrimaryPart.CFrame = CFrame.new(PosMon)
 					v.PrimaryPart.CanCollide = true;
 					v:FindFirstChild("Humanoid").WalkSpeed = 0;
@@ -918,11 +925,7 @@
 						Noclip.Velocity = Vector3.new(0, 0, 0)
 					end
 					if not plr.Character:FindFirstChild('highlight') then
-						local Test = Instance.new('Highlight')
-						Test.Name = "highlight"
-						Test.Enabled = true
-						Test.FillColor = Color3.fromRGB(0, 191, 255) -- xanh nước biển
-						Test.OutlineColor = Color3.fromRGB(255, 255, 255)
+						
 						Test.FillTransparency = 0.5
 						Test.OutlineTransparency = 0.2
 						Test.Parent = plr.Character
@@ -2003,65 +2006,71 @@
 
 	local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/discoart/FluentPlus/refs/heads/main/Beta.lua"))()
 	local Window = Fluent:CreateWindow({
-		Title = "Night Mystic",
-		SubTitle = "by Araújo7xp",
+		Title = "Night Mystic | Beta",
+		SubTitle = "by Araújo7xp & Mauro | Blox Fruits",
 		TabWidth = 160,
 		Theme = "Darker",
 		Acrylic = false,
-		Size = UDim2.fromOffset(470, 350),
+		Size = UDim2.fromOffset(450, 350),
 		MinimizeKey = Enum.KeyCode.End
 	})
 
 	local screenGui = Instance.new("ScreenGui")
-	screenGui.Name = "ControlGUI"
-	screenGui.Parent = game.CoreGui
+screenGui.Name = "ControlGUI"
+screenGui.Parent = game.CoreGui
 
-	local toggleButton = Instance.new("ImageButton")
-	toggleButton.Size = UDim2.new(0, 50, 0, 50)
-	toggleButton.Position = UDim2.new(0.15, 0, 0.15, 0)
-	toggleButton.Image = "rbxassetid://10036557605"
-	toggleButton.ScaleType = Enum.ScaleType.Fit
-	toggleButton.BackgroundTransparency = 1
-	toggleButton.Parent = screenGui
+-- Criação do botão flutuante
+local toggleButton = Instance.new("ImageButton")
+toggleButton.Size = UDim2.new(0, 50, 0, 50)
+toggleButton.Position = UDim2.new(0.15, 0, 0.15, 0)
+toggleButton.Image = "rbxassetid://76595458631173" -- sua imagem
+toggleButton.ScaleType = Enum.ScaleType.Fit
+toggleButton.BackgroundColor3 = Color3.fromRGB(0, 102, 255) -- cor de fundo (caso a imagem tenha transparência)
+toggleButton.Parent = screenGui
 
+-- 🔵 Deixa o botão totalmente redondo
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(1, 0) -- 1 = totalmente redondo
+corner.Parent = toggleButton
 
-	local isFluentVisible = true
-	local dragging, dragInput, dragStart, startPos
+-- Lógica de arrastar
+local isFluentVisible = true
+local dragging, dragInput, dragStart, startPos
 
-	local function update(input)
-		local AndepZai = input.Position - dragStart
-		toggleButton.Position = UDim2.new(
-			startPos.X.Scale,
-			startPos.X.Offset + AndepZai.X,
-			startPos.Y.Scale,
-			startPos.Y.Offset + AndepZai.Y
-		)
-	end
+local function update(input)
+    local AndepZai = input.Position - dragStart
+    toggleButton.Position = UDim2.new(
+        startPos.X.Scale,
+        startPos.X.Offset + AndepZai.X,
+        startPos.Y.Scale,
+        startPos.Y.Offset + AndepZai.Y
+    )
+end
 
-	toggleButton.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.Touch or input.UserInputType == Enum.UserInputType.MouseButton1 then
-			dragging = true
-			dragStart = input.Position
-			startPos = toggleButton.Position
-			input.Changed:Connect(function()
-				if input.UserInputState == Enum.UserInputState.End then
-					dragging = false
-				end
-			end)
-		end
-	end)
+toggleButton.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.Touch or input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragging = true
+        dragStart = input.Position
+        startPos = toggleButton.Position
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
 
-	toggleButton.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.Touch or input.UserInputType == Enum.UserInputType.MouseMovement then
-			dragInput = input
-		end
-	end)
+toggleButton.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.Touch or input.UserInputType == Enum.UserInputType.MouseMovement then
+        dragInput = input
+    end
+end)
 
-	game:GetService("UserInputService").InputChanged:Connect(function(input)
-		if dragging and input == dragInput then
-			update(input)
-		end
-	end)
+game:GetService("UserInputService").InputChanged:Connect(function(input)
+    if dragging and input == dragInput then
+        update(input)
+    end
+end)
 
 	toggleButton.MouseButton1Click:Connect(function()
 		isFluentVisible = not isFluentVisible
@@ -2072,67 +2081,235 @@
 		end
 	end)
 	local Tabs = {
-		Discord = Window:AddTab({
-	Title = "Discord",
-	Icon = "message-circle"
-}),
-Server = Window:AddTab({
-	Title = "Server",
-	Icon = "server"
-}),
-Main = Window:AddTab({
-	Title = "Farming",
-	Icon = "sword"
-}),
-Settings = Window:AddTab({
-	Title = "Settings",
-	Icon = "settings"
-}),
-Melee = Window:AddTab({
-	Title = "Auto Get Fighting Style V2",
-	Icon = "swords"
-}),
-Quests = Window:AddTab({
-	Title = "Quests - Items",
-	Icon = "scroll"
-}),
-SeaEvent = Window:AddTab({
-	Title = "Sea Events",
-	Icon = "waves"
-}),
-Mirage = Window:AddTab({
-	Title = "Race V4",
-	Icon = "moon"
-}),
-Drago = Window:AddTab({
-	Title = "Dragon Dojo",
-	Icon = "flame"
-}),
-Prehistoric = Window:AddTab({
-	Title = "Prehistoric",
-	Icon = "skull"
-}),
-Raids = Window:AddTab({
-	Title = "Raids",
-	Icon = "axe"
-}),
-Combat = Window:AddTab({
-	Title = "Pvp",
-	Icon = "crosshair"
-}),
-Travel = Window:AddTab({
-	Title = "Travel",
-	Icon = "map-pin"
-}),
-Shop = Window:AddTab({
-	Title = "Shop",
-	Icon = "shopping-bag"
-}),
-Misc = Window:AddTab({
-	Title = "Others",
-	Icon = "package"
+	Info = Window:AddTab({
+		Title = "Update Log",
+		Icon = "info"
+	}),
+
+	Discord = Window:AddTab({
+		Title = "Discord",
+		Icon = "message-circle"
+	}),
+	Server = Window:AddTab({
+		Title = "Server",
+		Icon = "server"
+	}),
+	Main = Window:AddTab({
+		Title = "Main",
+		Icon = "home"
+	}),
+	Settings = Window:AddTab({
+		Title = "Settings",
+		Icon = "settings"
+	}),
+	Melee = Window:AddTab({
+		Title = "Fighting Styles V2",
+		Icon = "swords"
+	}),
+	
+	Fruit = Window:AddTab({
+		Title = "Fruit",
+		Icon = "apple"
+	}),
+	
+	Quests = Window:AddTab({
+		Title = "Quests - Items",
+		Icon = "scroll"
+	}),
+	SeaEvent = Window:AddTab({
+		Title = "Sea Events",
+		Icon = "waves"
+	}),
+	Mirage = Window:AddTab({
+		Title = "Race V4",
+		Icon = "moon"
+	}),
+	Drago = Window:AddTab({
+		Title = "Dragon Dojo",
+		Icon = "flame"
+	}),
+	Prehistoric = Window:AddTab({
+		Title = "Prehistoric",
+		Icon = "skull"
+	}),
+	Raids = Window:AddTab({
+		Title = "Raids",
+		Icon = "axe"
+	}),
+	Combat = Window:AddTab({
+		Title = "Pvp",
+		Icon = "crosshair"
+	}),
+	Travel = Window:AddTab({
+		Title = "Travel",
+		Icon = "map-pin"
+	}),
+	Shop = Window:AddTab({
+		Title = "Shop",
+		Icon = "shopping-cart"
+	}),
+	Misc = Window:AddTab({
+		Title = "Misc",
+		Icon = "package"
+	})
+}
+
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local plr = Players.LocalPlayer
+local task = task
+
+local Options = {
+    AutoRandomFruit = false,
+    AutoStoreFruit = false,
+    AutoBringFruit = false,
+    CollectTweenFruit = false
+}
+
+local function ToggleAutoRandomFruit(state) Options.AutoRandomFruit = state end
+local function ToggleAutoStoreFruit(state) Options.AutoStoreFruit = state end
+local function ToggleAutoBringFruit(state) Options.AutoBringFruit = state end
+local function ToggleCollectTweenFruit(state) Options.CollectTweenFruit = state end
+
+Tabs.Fruit:AddParagraph({
+	Title = "Fruits",
+	Content = "Ative as funções Desejadas"
 })
-	}
+
+local T1 = Tabs.Fruit:AddToggle("AutoRandomFruit", { Title = "Auto Random Fruit", Default = false })
+T1:OnChanged(ToggleAutoRandomFruit)
+
+local T2 = Tabs.Fruit:AddToggle("AutoStoreFruit", { Title = "Auto Store Fruit", Default = false })
+T2:OnChanged(ToggleAutoStoreFruit)
+
+local T3 = Tabs.Fruit:AddToggle("AutoBringFruit", { Title = "Auto Collect Fruit (Insta Teleport (Not recommend)", Default = false })
+T3:OnChanged(ToggleAutoBringFruit)
+
+local T4 = Tabs.Fruit:AddToggle("CollectTweenFruit", { Title = "Collect Fruit (Tween)", Default = false })
+T4:OnChanged(ToggleCollectTweenFruit)
+
+local function BuyRandomFruit()
+    pcall(function()
+        ReplicatedStorage.Remotes.CommF_:InvokeServer("Cousin", "Buy")
+    end)
+end
+
+local function StoreFruitTool(tool)
+    pcall(function()
+        local first = string.gsub(tool.Name, " Fruit", "")
+        local payloadName = first .. "-" .. first
+        ReplicatedStorage.Remotes.CommF_:InvokeServer("StoreFruit", payloadName, tool)
+    end)
+end
+
+local function BringFruit(item)
+    if not item then return end
+    local part
+    if item:IsA("Tool") then
+        part = item:FindFirstChild("Handle")
+    elseif item:IsA("Model") and item.Name:lower():find("fruit") then
+        for _, v in ipairs(item:GetDescendants()) do
+            if v:IsA("BasePart") then part = v break end
+        end
+    end
+    if part and plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") then
+        local startTime = tick()
+        repeat
+            plr.Character.HumanoidRootPart.CFrame = part.CFrame + Vector3.new(0, 3, 0)
+            task.wait(0.3)
+        until not item:IsDescendantOf(workspace) or tick() - startTime > 10
+    end
+end
+
+local MaxSpeed = 330
+local function getCharacter()
+    if not plr.Character then
+        plr.CharacterAdded:Wait()
+    end
+    plr.Character:WaitForChild("HumanoidRootPart")
+    return plr.Character
+end
+
+local function toggleNoclip(Toggle)
+    local char = getCharacter()
+    for _, v in pairs(char:GetChildren()) do
+        if v:IsA("BasePart") then
+            v.CanCollide = not Toggle
+        end
+    end
+end
+
+local function Teleport(GoalCFrame, Speed)
+    Speed = Speed or MaxSpeed
+    local char = getCharacter()
+    local hrp = char:WaitForChild("HumanoidRootPart")
+    toggleNoclip(true)
+    local magnitude = (hrp.Position - GoalCFrame.Position).Magnitude
+    while magnitude > 1 do
+        local direction = (GoalCFrame.Position - hrp.Position).unit
+        hrp.CFrame = hrp.CFrame + direction * (Speed * task.wait())
+        magnitude = (hrp.Position - GoalCFrame.Position).Magnitude
+    end
+    toggleNoclip(false)
+end
+
+local function BringFruitTween(item)
+    if not item then return end
+    local part
+    if item:IsA("Tool") then
+        part = item:FindFirstChild("Handle")
+    elseif item:IsA("Model") and item.Name:lower():find("fruit") then
+        for _, v in ipairs(item:GetDescendants()) do
+            if v:IsA("BasePart") then part = v break end
+        end
+    end
+    if part and plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") then
+        Teleport(part.CFrame + Vector3.new(0, 3, 0), MaxSpeed)
+    end
+end
+
+task.spawn(function()
+    while task.wait(0.5) do
+        if Options.AutoRandomFruit then
+            BuyRandomFruit()
+        end
+
+        if Options.AutoStoreFruit then
+            for _, tool in pairs(plr.Backpack:GetChildren()) do
+                if tool:IsA("Tool") and tool.Name:find("Fruit") then
+                    StoreFruitTool(tool)
+                end
+            end
+            for _, tool in pairs(plr.Character:GetChildren()) do
+                if tool:IsA("Tool") and tool.Name:find("Fruit") then
+                    StoreFruitTool(tool)
+                end
+            end
+        end
+
+        if Options.AutoBringFruit then
+            for _, obj in pairs(workspace:GetChildren()) do
+                if (obj:IsA("Tool") and obj.Name:lower():find("fruit")) or (obj:IsA("Model") and obj.Name:lower():find("fruit")) then
+                    BringFruit(obj)
+                end
+            end
+        end
+
+        if Options.CollectTweenFruit then
+            for _, obj in pairs(workspace:GetChildren()) do
+                if (obj:IsA("Tool") and obj.Name:lower():find("fruit")) or (obj:IsA("Model") and obj.Name:lower():find("fruit")) then
+                    BringFruitTween(obj)
+                end
+            end
+        end
+    end
+end)
+
+-- 💬 Parágrafo único na aba Information
+Tabs.Info:AddParagraph({
+	Title = "Leia Por Favor",
+	Content = "Em Breve Vamos Colocar As Atualizações Do Script Aqui"
+})
 
 	Tabs.Discord:AddButton({
 		Title = "Link Join Sever Discord",
@@ -4613,9 +4790,9 @@ Misc = Window:AddTab({
 		_G.Seriality = Value
 	end)
 	local Bringmob = Tabs.Settings:AddToggle("Bringmob", {
-		Title = "Bring Mobs",
+		Title = "Bring Mobs (Beta)",
 		Description = "Junta Os Mobs (Se Bugar Reative)",
-		Default = true
+		Default = false 
 	})
 	Bringmob:OnChanged(function(Value)
 		_B = Value
@@ -11265,7 +11442,7 @@ end)
 		end
 	})
 	Tabs.Misc:AddButton({
-		Title = "Turn on Low CPU",
+		Title = "Fps Boost",
 		Description = "",
 		Callback = function()
 			LowCpu()
@@ -11286,7 +11463,7 @@ end)
 		end
 	})
 	Tabs.Misc:AddButton({
-		Title = "Remove Sky Fog",
+		Title = "Nofog",
 		Description = "",
 		Callback = function()
 			if Lighting:FindFirstChild("LightingLayers") then
@@ -11303,7 +11480,7 @@ end)
 
 	Tabs.Misc:AddSection("Configure - God")
 	Tabs.Misc:AddButton({
-		Title = "Rain Fruits (Client)",
+		Title = "Rain Fruits",
 		Description = "",
 		Callback = function()
 			for i, v in pairs(game:GetObjects("rbxassetid://14759368201")[1]:GetChildren()) do
@@ -11322,7 +11499,7 @@ end)
 		end
 	})
 	briggt1 = Tabs.Misc:AddToggle("briggt1", {
-		Title = "Turn on Full Bright",
+		Title = "Full Bright",
 		Description = "",
 		Default = false
 	})
@@ -11373,7 +11550,7 @@ end)
 	end)
 	walkWater = Tabs.Misc:AddToggle("walkWater", {
 		Title = "Turn on Walk on Water",
-		Description = "walk on water",
+		Description = "Andar Sobre a Água",
 		Default = true
 	})
 	walkWater:OnChanged(function(Value)
@@ -11573,6 +11750,17 @@ end)
 					if MobAura then
 						local LeftClickRemote = Pretool:FindFirstChild('LeftClickRemote');
 						if LeftClickRemote then
+							Actived()
+							LeftClickRemote:FireServer(Vector3.new(0.01, -500, 0.01), 1, true);
+							LeftClickRemote:FireServer(false)
+						end
+					end
+				end
+			end)
+		end)
+	end)
+	Window:SelectTab(1)
+ LeftClickRemote then
 							Actived()
 							LeftClickRemote:FireServer(Vector3.new(0.01, -500, 0.01), 1, true);
 							LeftClickRemote:FireServer(false)
