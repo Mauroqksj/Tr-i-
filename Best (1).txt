@@ -2307,28 +2307,12 @@ Tabs.Info:AddParagraph({
 })
 
 	Tabs.Discord:AddButton({
-    Title = "Link Join Servidor Discord",
-    Description = "Nosso Servidor do Discord",
-    Callback = function()
-        setclipboard("https://discord.gg/pjEeHmk9P")
-    end
-})
-
-Tabs.Discord:AddButton({
-    Title = "NightShadow Discord",
-    Description = "Entre no Discord NightShadow",
-    Callback = function()
-        setclipboard("https://discord.gg/nightshadow")
-    end
-})
-
-Tabs.Discord:AddButton({
-    Title = "Canal NightShadow",
-    Description = "Canal NightShadow YouTube",
-    Callback = function()
-        setclipboard("https://youtube.com/@nightshadowzz?si=YwP_QhRynkTo0w1F")
-    end
-})
+		Title = "Link Join Sever Discord",
+		Description = "Nosso Servidor do discord",
+		Callback = function()
+			setclipboard(tostring("https://discord.gg/pjEeHmk9P"))
+		end
+	})
 	local ReplicatedStorage = game:GetService("ReplicatedStorage")
 	local Players = game:GetService("Players")
 	if World3 then
@@ -10923,6 +10907,7 @@ end)
 			replicated.Remotes.CommF_:InvokeServer("CyborgTrainer", " Buy")
 		end
 	})
+	
 	Tabs.Server:AddButton({
 		Title = "Rejoin Server",
 		Description = "",
