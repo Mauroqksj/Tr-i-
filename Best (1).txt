@@ -444,7 +444,7 @@ Sea = World1 or World2 or World3 or plr:Kick("❌ Error : A[12]Blox Fruits ❌")
 		end
 		for _, v in pairs(workspace.Enemies:GetChildren()) do
 			if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-				if (v.PrimaryPart.Position - PosMon).Magnitude <= 250 then
+				if (v.PrimaryPart.Position - PosMon).Magnitude <= 150 then
 					v.PrimaryPart.CFrame = CFrame.new(PosMon)
 					v.PrimaryPart.CanCollide = true;
 					v:FindFirstChild("Humanoid").WalkSpeed = 0;
@@ -11745,17 +11745,6 @@ end)
 					if MobAura then
 						local LeftClickRemote = Pretool:FindFirstChild('LeftClickRemote');
 						if LeftClickRemote then
-							Actived()
-							LeftClickRemote:FireServer(Vector3.new(0.01, -500, 0.01), 1, true);
-							LeftClickRemote:FireServer(false)
-						end
-					end
-				end
-			end)
-		end)
-	end)
-	Window:SelectTab(1)
-		if LeftClickRemote then
 							Actived()
 							LeftClickRemote:FireServer(Vector3.new(0.01, -500, 0.01), 1, true);
 							LeftClickRemote:FireServer(false)
