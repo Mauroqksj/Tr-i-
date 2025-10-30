@@ -444,7 +444,7 @@ Sea = World1 or World2 or World3 or plr:Kick("❌ Error : A[12]Blox Fruits ❌")
 		end
 		for _, v in pairs(workspace.Enemies:GetChildren()) do
 			if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-				if (v.PrimaryPart.Position - PosMon).Magnitude <= 130 then
+				if (v.PrimaryPart.Position - PosMon).Magnitude <= 135 then
 					v.PrimaryPart.CFrame = CFrame.new(PosMon)
 					v.PrimaryPart.CanCollide = true;
 					v:FindFirstChild("Humanoid").WalkSpeed = 0;
@@ -2303,7 +2303,7 @@ end)
 -- 💬 Parágrafo único na aba Information
 Tabs.Info:AddParagraph({
 	Title = "Leia Por Favor",
-	Content = "Fix Farm level, Improve Bone Farm/Cake Prince Farm, delet Highlight Blue"
+	Content = "Em Breve Vamos Colocar as Atualizações do Script Aqui"
 })
 
 	Tabs.Discord:AddButton({
@@ -2366,71 +2366,48 @@ Tabs.Info:AddParagraph({
 		Default = false
 	})
 	FarmLevel:OnChanged(function(Value)
-    _G.Level = Value
-end)
-
-spawn(function()
-    while wait(Sec) do
-        if _G.Level then
-            pcall(function()
-                local QuestTitle = plr.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
-
-                -- Verifica se a missão não está mais visível, abandona e reinicia
-                if not string.find(QuestTitle, QuestNeta()[5]) then
-                    replicated.Remotes.CommF_:InvokeServer("AbandonQuest")
-                end
-
-                -- Se a missão não estiver visível, pega ela de novo
-                if plr.PlayerGui.Main.Quest.Visible == false then
-                    _tp(QuestNeta()[6])  -- Teleporta para o ponto de quest
-                    if (Root.Position - QuestNeta()[6].Position).Magnitude <= 5 then
-                        replicated.Remotes.CommF_:InvokeServer("StartQuest", QuestNeta()[3], QuestNeta()[2])
-                    end
-                elseif plr.PlayerGui.Main.Quest.Visible == true then
-                    -- Quando a missão está visível, vai atacar os inimigos
-                    if workspace.Enemies:FindFirstChild(QuestNeta()[1]) then
-                        for i, v in pairs(workspace.Enemies:GetChildren()) do
-                            if Attack.Alive(v) then
-                                if v.Name == QuestNeta()[1] then
-                                    if string.find(QuestTitle, QuestNeta()[5]) then
-                                        repeat
-                                            wait()
-                                            Attack.Kill(v, _G.Level)
-                                        until not _G.Level or v.Humanoid.Health <= 0 or not v.Parent or plr.PlayerGui.Main.Quest.Visible == false
-                                    else
-                                        -- Caso a missão tenha sido abandonada, reinicia o processo
-                                        replicated.Remotes.CommF_:InvokeServer("AbandonQuest")
-                                        break
-                                    end
-                                end
-                            end
-                        end
-                    else
-                        -- Se o inimigo não for encontrado, teleporta para outro local
-                        _tp(QuestNeta()[4])
-                        if replicated:FindFirstChild(QuestNeta()[1]) then
-                            _tp(replicated:FindFirstChild(QuestNeta()[1]).HumanoidRootPart.CFrame * CFrame.new(0, 30, 0))
-                        end
-                    end
-                end
-
-                -- Verifica se o jogador morreu e reinicia a missão
-                if plr.Character and plr.Character:FindFirstChild("Humanoid") then
-                    local humanoid = plr.Character.Humanoid
-                    if humanoid.Health <= 0 then
-                        -- Se o jogador morrer, reinicia o farm e pega a missão novamente
-                        wait(2)  -- Aguarda a morte
-                        replicated.Remotes.CommF_:InvokeServer("AbandonQuest")
-                        _tp(QuestNeta()[6])
-                        if (Root.Position - QuestNeta()[6].Position).Magnitude <= 5 then
-                            replicated.Remotes.CommF_:InvokeServer("StartQuest", QuestNeta()[3], QuestNeta()[2])
-                        end
-                    end
-                end
-            end)
-        end
-    end
-end)
+		_G.Level = Value
+	end)
+	spawn(function()
+		while wait(Sec) do
+			if _G.Level then
+				pcall(function()
+					local QuestTitle = plr.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
+					if not string.find(QuestTitle, QuestNeta()[5]) then
+						replicated.Remotes.CommF_:InvokeServer("AbandonQuest")
+					end
+					if plr.PlayerGui.Main.Quest.Visible == false then
+						_tp(QuestNeta()[6])
+						if (Root.Position - QuestNeta()[6].Position).Magnitude <= 5 then
+							replicated.Remotes.CommF_:InvokeServer("StartQuest", QuestNeta()[3], QuestNeta()[2])
+						end
+					elseif plr.PlayerGui.Main.Quest.Visible == true then
+						if workspace.Enemies:FindFirstChild(QuestNeta()[1]) then
+							for i, v in pairs(workspace.Enemies:GetChildren()) do
+								if Attack.Alive(v) then
+									if v.Name == QuestNeta()[1] then
+										if string.find(QuestTitle, QuestNeta()[5]) then
+											repeat
+												wait()
+												Attack.Kill(v, _G.Level)
+											until not _G.Level or v.Humanoid.Health <= 0 or not v.Parent or plr.PlayerGui.Main.Quest.Visible == false
+										else
+											replicated.Remotes.CommF_:InvokeServer("AbandonQuest")
+										end
+									end
+								end
+							end
+						else
+							_tp(QuestNeta()[4])
+							if replicated:FindFirstChild(QuestNeta()[1]) then
+								_tp(replicated:FindFirstChild(QuestNeta()[1]).HumanoidRootPart.CFrame * CFrame.new(0, 30, 0))
+							end
+						end
+					end
+				end)
+			end
+		end
+	end)
 
 	local BossDropdown = Tabs.Main:AddDropdown("BossDropdown", {
 		Title = "Selecione o Boss",
