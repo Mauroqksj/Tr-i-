@@ -2007,7 +2007,7 @@ local Window = Fluent:CreateWindow({
     TabWidth = 160,
     Theme = "Darker",
     Acrylic = false,
-    Size = UDim2.fromOffset(500, 400),
+    Size = UDim2.fromOffset(400, 325),
     MinimizeKey = Enum.KeyCode.End,
     UserInfo = true,
     UserInfoTop = false,
@@ -11184,7 +11184,7 @@ end)
 		end
 	})
 	rtxM = Tabs.Misc:AddToggle("rtxM", {
-		Title = "Turn on RTX Mode",
+		Title = "RTX Mode",
 		Description = "",
 		Default = false
 	})
@@ -11263,20 +11263,50 @@ end)
 		end
 	})
 	Tabs.Misc:AddButton({
-		Title = "Nofog",
-		Description = "",
-		Callback = function()
-			if Lighting:FindFirstChild("LightingLayers") then
-				Lighting.LightingLayers:Destroy()
-			end
-			if Lighting:FindFirstChild("SeaTerrorCC") then
-				Lighting.SeaTerrorCC:Destroy()
-			end
-			if Lighting:FindFirstChild("FantasySky") then
-				Lighting.FantasySky:Destroy()
-			end
-		end
-	})
+    Title = "Nofog",
+    Description = "",
+    Callback = function()
+        if Lighting:FindFirstChild("LightingLayers") then
+            Lighting.LightingLayers:Destroy()
+        end
+        if Lighting:FindFirstChild("SeaTerrorCC") then
+            Lighting.SeaTerrorCC:Destroy()
+        end
+        if Lighting:FindFirstChild("FantasySky") then
+            Lighting.FantasySky:Destroy()
+        end
+    end
+})
+
+Tabs.Misc:AddButton({
+    Title = "Redeem Codes",
+    Description = "Resgatar todos os códigos.",
+    Callback = function()
+        local Codes = {
+            "KITT_RESET", "Sub2UncleKizaru", "SUB2GAMERROBOT_RESET1", "Sub2Fer999", "Enyu_is_Pro", "JCWK",
+            "StarcodeHEO", "MagicBus", "KittGaming", "Sub2CaptainMaui", "Sub2OfficalNoobie", "TheGreatAce",
+            "Sub2NoobMaster123", "Sub2Daigrock", "Axiore", "StrawHatMaine", "TantaiGaming", "Bluxxy",
+            "SUB2GAMERROBOT_EXP1", "Chandler", "NOMOREHACK", "BANEXPLOIT", "WildDares", "BossBuild",
+            "GetPranked", "EARN_FRUITS", "FIGHT4FRUIT", "NOEXPLOITER", "NOOB2ADMIN", "CODESLIDE", "ADMINHACKED",
+            "ADMINDARES", "fruitconcepts", "krazydares", "TRIPLEABUSE", "SEATROLLING", "24NOADMIN", "REWARDFUN",
+            "NEWTROLL", "fudd10_v2", "Fudd10", "Bignews", "SECRET_ADMIN"
+        }
+
+        local function RedeemAllCodes()
+            for _, code in ipairs(Codes) do
+                pcall(function()
+                    game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(code)
+                end)
+            end
+            -- Supondo que 'Fluent' exista no ambiente (como nos scripts anteriores)
+            if typeof(Fluent) == "table" and Fluent.Notify then
+                Fluent:Notify({ Title = "Codes", Content = "Códigos Resgatados", Duration = 4 })
+            end
+        end
+
+        RedeemAllCodes()
+    end
+})
 
 	Tabs.Misc:AddSection("Configure - God")
 	Tabs.Misc:AddButton({
@@ -11349,7 +11379,7 @@ end)
 		end
 	end)
 	walkWater = Tabs.Misc:AddToggle("walkWater", {
-		Title = "Turn on Walk on Water",
+		Title = "Walk on Water",
 		Description = "Andar Sobre a Água",
 		Default = true
 	})
@@ -11362,7 +11392,7 @@ end)
 		end
 	end)
 	iceWalk = Tabs.Misc:AddToggle("iceWalk", {
-		Title = "Turn on Ice Walk",
+		Title = "on Ice Walk",
 		Description = "Ice walk just like walk on water but have ice effect",
 		Default = false
 	})
