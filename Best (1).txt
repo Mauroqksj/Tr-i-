@@ -444,7 +444,7 @@ Sea = World1 or World2 or World3 or plr:Kick("❌ Error : A[12]Blox Fruits ❌")
 		end
 		for _, v in pairs(workspace.Enemies:GetChildren()) do
 			if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-				if (v.PrimaryPart.Position - PosMon).Magnitude <= 100 then
+				if (v.PrimaryPart.Position - PosMon).Magnitude <= 165 then
 					v.PrimaryPart.CFrame = CFrame.new(PosMon)
 					v.PrimaryPart.CanCollide = true;
 					v:FindFirstChild("Humanoid").WalkSpeed = 0;
@@ -2005,9 +2005,9 @@ local Window = Fluent:CreateWindow({
     Title = "Night Mystic | Beta",
     SubTitle = "by Araújo7xp & Mauro | Blox Fruits",
     TabWidth = 160,
-    Theme = "Darker",
+    Theme = "Dark",
     Acrylic = false,
-    Size = UDim2.fromOffset(500, 400),
+    Size = UDim2.fromOffset(450, 375),
     MinimizeKey = Enum.KeyCode.End,
     UserInfo = true,
     UserInfoTop = false,
