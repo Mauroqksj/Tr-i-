@@ -33,10 +33,27 @@ do
   Num_self = 25
 end
 -- https://discord.gg/wa52S9VvPP
-repeat local start = plr.PlayerGui:WaitForChild("Main"):WaitForChild("Loading") and game:IsLoaded() wait() until start
-World1 = game.PlaceId == 2753915549
-World2 = game.PlaceId == 4442272183
-World3 = game.PlaceId == 7449423635
+repeat
+    local start = plr.PlayerGui:WaitForChild("Main"):WaitForChild("Loading") and game:IsLoaded()
+    wait()
+until start
+
+--// PlaceIds de cada mundo
+local World1Places = {2753915549}
+local World2Places = {4442272183, 79091703265657}
+local World3Places = {7449423635, 100117331123089}
+
+--// Função pra verificar se o PlaceId atual tá na lista
+local function inWorld(placeList)
+    return table.find(placeList, game.PlaceId) ~= nil
+end
+
+--// Verificação dos mundos
+World1 = inWorld(World1Places)
+World2 = inWorld(World2Places)
+World3 = inWorld(World3Places)
+
+--// Verificação geral
 Sea = World1 or World2 or World3 or plr:Kick("❌ Error : A[12]Blox Fruits ❌")
 Marines = function() replicated.Remotes.CommF_:InvokeServer("SetTeam","Marines") end
 Pirates = function() replicated.Remotes.CommF_:InvokeServer("SetTeam","Pirates") end
@@ -661,7 +678,7 @@ local Window = Fluent:CreateWindow({
     Title="Tuấn Anh IOS [ Premium ]",
     SubTitle="  by tuananhiosdz", 
     TabWidth=160, 
-    Theme="TuanAnhIOS",
+    Theme="Darker",
     Acrylic=false,
     Size=UDim2.fromOffset(530, 350), 
     MinimizeKey=Enum.KeyCode.End
