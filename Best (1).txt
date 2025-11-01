@@ -2002,10 +2002,10 @@ Sea = World1 or World2 or World3 or plr:Kick("❌ Error : A[12]Blox Fruits ❌")
 	local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/discoart/FluentPlus/refs/heads/main/Beta.lua"))()
 
 local Window = Fluent:CreateWindow({
-    Title = "Night Mystic | Beta",
+    Title = "Night Mystic | Beta [Descontinuado]",
     SubTitle = "by Araújo7xp & Mauro | Blox Fruits",
     TabWidth = 160,
-    Theme = "Dark",
+    Theme = "Darker",
     Acrylic = false,
     Size = UDim2.fromOffset(450, 375),
     MinimizeKey = Enum.KeyCode.End,
@@ -2308,7 +2308,7 @@ end)
 -- 💬 Parágrafo único na aba Information
 Tabs.Info:AddParagraph({
 	Title = "Leia Por Favor",
-	Content = "Em Breve Vamos Colocar as Atualizações do Script Aqui"
+	Content = "Tab Shop Not Working"
 })
 
 	Tabs.Discord:AddButton({
